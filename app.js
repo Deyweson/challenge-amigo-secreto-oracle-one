@@ -1,12 +1,11 @@
 //O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
-
+const lista = document.querySelector('#listaAmigos')
+const resultado = document.querySelector('#resultado')
+const nome = document.querySelector('#amigo')
 const amigos = []
 
 function listarAmigos() {
-
-  const lista = document.querySelector('#listaAmigos')
   lista.innerHTML = ''
-
   for (let i = 0; i < amigos.length; i++) {
     let item = document.createElement("li")
     let amigo = document.createTextNode(amigos[i])
@@ -16,12 +15,11 @@ function listarAmigos() {
 }
 
 function adicionarAmigo() {
-  const nome = document.querySelector('#amigo').value
-  if (nome.trim().length <= 0) {
+  if (nome.value.trim().length <= 0) {
     alert('Digite um nome no campo!')
     return
   }
-  amigos.push(nome)
+  amigos.push(nome.value)
   listarAmigos()
 }
 
@@ -33,6 +31,6 @@ function sortearAmigo() {
 
   let numero = Math.floor(Math.random() * amigos.length)
   let amigosSorteado = amigos[numero]
-  const resultado = document.querySelector('#resultado')
+  resultado.innerHTML = ''
   resultado.innerHTML = `<li>${amigosSorteado}</li>`
 }
